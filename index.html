@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>돋보기 주보</title>
+<meta name="description" content="사랑의교회 2026년 9월 27일 주보를 어르신이 읽기 쉽게 큰 글씨로 옮긴 페이지">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#e4004c">
+<meta property="og:type" content="website">
+<meta property="og:title" content="돋보기 주보 · 9월 27일 주일">
+<meta property="og:description" content="사랑의교회 주보를 어르신이 읽기 쉽게 큰 글씨로 옮겼어요. 예배 순서, 이번 주 소식, 함께 드릴 기도를 담았습니다.">
+<meta property="og:url" content="https://eunseo9311.github.io/dotbogi-jubo/">
+<meta property="og:image" content="https://eunseo9311.github.io/dotbogi-jubo/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23e4004c'/%3E%3Ccircle cx='28' cy='28' r='13' fill='none' stroke='%23fff' stroke-width='6'/%3E%3Cpath d='M38 38l12 12' stroke='%23fff' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700;900&family=Noto+Serif+KR:wght@700;900&display=swap">
+<style>
+  /* 흰 바탕·검정·사랑의교회 빨강(로고 #e4004c)만 쓰는 고대비 단일 테마 */
+  :root {
+    --paper: #ffffff;
+    --ink: #141013;
+    --ink-2: #3a2f33;
+    --brand: #e4004c;     /* 로고 빨강: 띠, 테두리, 점 같은 장식 */
+    --accent: #b0003a;    /* 짙은 빨강: 글씨와 색칠한 카드 (흰 바탕 대비 7.2:1) */
+    --accent-2: #8f0030;
+    --wash: #fdeef2;
+    --line: #f1c6d2;
+    --on-accent: #ffffff;
+    --on-accent-2: #ffd6e2;
+    --scale: 1;
+    --radius: 12px;
+    --sans: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
+    --serif: "Noto Serif KR", "AppleMyungjo", "Batang", "바탕", serif;
+    font-size: calc(32px * var(--scale)); /* 본문 24pt */
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :root { scroll-behavior: auto; }
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; }
+  [hidden] { display: none !important; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.6;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  body::before {
+    content: "";
+    display: block;
+    height: 0.45rem;
+    background: var(--brand);
+  }
+  h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
+  ul, ol { padding: 0; list-style: none; }
+  strong { font-weight: 900; }
+  :focus-visible { outline: 4px solid var(--ink); outline-offset: 4px; }
+
+  .page {
+    max-width: 30rem;
+    margin-inline: auto;
+    padding-inline: 20px;
+    padding-block: 0.9rem 2.5rem;
+    display: grid;
+    gap: 2rem;
+  }
+  .stack { display: grid; gap: 0.6rem; }
+
+  /* 머리 */
+  .masthead { display: grid; gap: 0.3rem; }
+  .eyebrow { color: var(--accent); font-weight: 700; }
+  .masthead h1 {
+    font-size: clamp(1.75rem, 12vw, 2.25rem); /* 최소 42pt */
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .when { font-weight: 900; }
+
+  .tools { display: grid; gap: 0.35rem; margin-top: 0.6rem; }
+  .tools-label { font-weight: 700; }
+  .size-now { font-weight: 900; color: var(--accent); margin-left: 0.3em; }
+  .tools-row { display: flex; flex-wrap: wrap; gap: 0.4rem 0.5rem; }
+  .btn {
+    appearance: none;
+    font: inherit;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--accent);
+    background: var(--paper);
+    border: 3px solid var(--brand);
+    border-radius: 999px;
+    min-height: 2rem;
+    padding: 0.1em 0.75em;
+    cursor: pointer;
+  }
+  .btn:hover { background: var(--wash); }
+  .btn:disabled {
+    color: var(--ink-2);
+    border-color: var(--line);
+    background: var(--paper);
+    cursor: default;
+  }
+  .btn--solid { background: var(--accent); color: var(--on-accent); }
+  .btn--solid:hover { background: var(--accent-2); }
+
+  .jump {
+    display: grid;
+    gap: 0.4rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+    margin-top: 0.8rem;
+    scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 0.4rem);
+  }
+  .jump a {
+    display: flex;
+    align-items: center;
+    gap: 0.45em;
+    padding: 0.3em 0.55em;
+    border: 3px solid var(--brand);
+    border-radius: var(--radius);
+    background: var(--paper);
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .jump a:hover { background: var(--wash); }
+  .jump a[aria-current="true"] { background: var(--accent); color: var(--on-accent); }
+  .jump a[aria-current="true"] .num { background: var(--on-accent); color: var(--accent); }
+
+  /* 번호 원 */
+  .num {
+    flex: none;
+    display: inline-grid;
+    place-items: center;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-weight: 900;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .num--light { background: var(--on-accent); color: var(--accent); }
+  .lead-num { margin-right: 0.35em; vertical-align: 0.08em; }
+
+  /* 화면 */
+  .screen {
+    display: grid;
+    gap: 1.1rem;
+    padding-top: 1rem;
+    border-top: 0.25rem solid var(--ink);
+  }
+  .screen-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.3rem 0.45rem;
+  }
+  .screen-head .num { font-size: 1.5rem; }
+  .screen-head h2 {
+    font-size: 1.75rem; /* 42pt */
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .screen-note { color: var(--ink-2); font-weight: 700; }
+
+  .block-title {
+    font-size: 1.5rem; /* 36pt */
+    font-weight: 900;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+  .sub-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 1.3;
+    margin-top: 0.5rem;
+  }
+  .muted { color: var(--ink-2); }
+  .aside { color: var(--ink-2); font-weight: 700; }
+
+  .card {
+    display: grid;
+    gap: 0.45rem;
+    align-content: start;
+    padding: 0.7rem 0.85rem;
+    border: 3px solid var(--brand);
+    border-radius: var(--radius);
+    background: var(--paper);
+  }
+  .card--accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+  }
+
+  .next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4em;
+    min-height: 2.4rem;
+    padding: 0.35em 0.8em;
+    border-radius: var(--radius);
+    background: var(--accent);
+    color: var(--on-accent);
+    font-weight: 900;
+    text-align: center;
+    text-decoration: none;
+  }
+  .next:hover { background: var(--accent-2); }
+
+  /* 설교 */
+  .kicker { font-weight: 700; color: var(--on-accent-2); }
+  .sermon-title {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 900;
+    line-height: 1.35;
+    text-wrap: balance;
+  }
+  .pairs { display: grid; gap: 0.15rem; }
+  .pairs div { display: flex; flex-wrap: wrap; gap: 0 0.6em; }
+  .pairs dt { font-weight: 700; color: var(--on-accent-2); }
+  .pairs dd { font-weight: 700; }
+
+  /* 말씀 */
+  .verse { display: grid; gap: 0.1rem; }
+  .verse blockquote {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.55;
+  }
+  .verse figcaption { color: var(--accent); font-weight: 700; }
+  .plain {
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.6rem 0.8rem;
+    border-radius: var(--radius);
+    background: var(--wash);
+  }
+  .plain-label { color: var(--accent); font-weight: 900; }
+
+  /* 예배 순서 */
+  .steps { display: grid; }
+  .steps > li {
+    display: grid;
+    gap: 0.25rem;
+    padding-block: 0.7rem;
+    border-top: 2px solid var(--line);
+  }
+  .steps > li:first-child { border-top: 0; padding-top: 0.2rem; }
+  .step-name { font-size: 1.5rem; font-weight: 900; line-height: 1.3; }
+  .step-name .num { font-size: 0.8em; }
+  .hymns { display: grid; gap: 0.5rem; margin-top: 0.2rem; }
+  .hymn-ref { font-weight: 700; color: var(--ink-2); }
+  .hymn-no {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    margin-left: 0.2em;
+  }
+  .hymn-title { font-weight: 700; }
+
+  /* 부별 안내 */
+  .services {
+    display: grid;
+    gap: 0.6rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  }
+  .service-top { display: grid; justify-items: start; gap: 0.15rem; }
+  .pill {
+    display: inline-block;
+    padding: 0.02em 0.4em;
+    border-radius: 0.3em;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-weight: 900;
+    line-height: 1.3;
+  }
+  .service-time {
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 1.3;
+    font-variant-numeric: tabular-nums;
+  }
+  .service-pre { color: var(--ink-2); font-weight: 700; }
+  .facts { display: grid; gap: 0.35rem; margin-top: 0.1rem; }
+  .facts dt { color: var(--accent); font-weight: 700; }
+  .facts dd { font-weight: 700; }
+
+  /* 고백 */
+  .confession > li {
+    padding-block: 0.45rem;
+    border-top: 2px solid var(--line);
+    font-weight: 700;
+  }
+  .confession > li:first-child { border-top: 0; padding-top: 0; }
+
+  /* 주중 */
+  .week { display: grid; }
+  .week > li {
+    display: grid;
+    gap: 0.15rem;
+    padding-block: 0.75rem;
+    border-top: 3px solid var(--brand);
+  }
+  .week-name { font-size: 1.5rem; font-weight: 900; line-height: 1.3; }
+  .week-time { font-size: 1.25rem; font-weight: 900; color: var(--accent); }
+  .preachers { display: grid; gap: 0.1rem; margin-top: 0.15rem; }
+
+  /* 세 가지 */
+  .three-box {
+    display: grid;
+    gap: 0.55rem;
+    padding: 0.75rem 0.85rem;
+    border: 5px solid var(--ink);
+    border-radius: var(--radius);
+  }
+  .three { display: grid; gap: 0.6rem; }
+  .three .num { font-size: 0.9em; }
+
+  /* 소식 */
+  .news { display: grid; gap: 0.7rem; }
+  .tag {
+    justify-self: start;
+    padding: 0.02em 0.45em;
+    border-radius: 0.3em;
+    background: var(--ink);
+    color: var(--paper);
+    font-weight: 700;
+  }
+  .news-title { font-size: 1.5rem; font-weight: 900; line-height: 1.3; text-wrap: balance; }
+  .news-sub { color: var(--accent); font-weight: 900; }
+  .lines { display: grid; gap: 0.3rem; }
+  .lines > li { position: relative; padding-left: 0.85em; }
+  .lines > li::before {
+    content: "";
+    position: absolute;
+    left: 0.08em;
+    top: 0.6em;
+    width: 0.4em;
+    height: 0.4em;
+    border-radius: 50%;
+    background: var(--brand);
+  }
+  .ask {
+    padding-top: 0.4rem;
+    border-top: 2px dashed var(--line);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .ask b { color: var(--accent); font-weight: 900; margin-right: 0.3em; }
+
+  .prayers { display: grid; gap: 0.7rem; }
+  .prayers .num { font-size: 0.9em; }
+
+  /* 그림 */
+  .prompt {
+    display: grid;
+    gap: 0.5rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: var(--radius);
+    background: var(--wash);
+    line-height: 1.5;
+  }
+  .prompt > li { display: grid; grid-template-columns: auto 1fr; gap: 0.45rem; align-items: start; }
+  .prompt .num { font-size: 0.75em; margin-top: 0.2em; }
+  .prompt-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.7rem; }
+  .copy-status { font-weight: 700; color: var(--accent); }
+  .prompt-fallback {
+    width: 100%;
+    font: inherit;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 0.4rem 0.5rem;
+    border: 3px solid var(--brand);
+    border-radius: var(--radius);
+    color: var(--ink);
+    background: var(--paper);
+    resize: vertical;
+  }
+  .meaning { display: grid; }
+  .meaning > li {
+    padding-block: 0.55rem;
+    border-top: 2px solid var(--line);
+    font-weight: 700;
+  }
+  .meaning > li:first-child { border-top: 0; padding-top: 0; }
+  .meaning .num { font-size: 0.8em; }
+
+  .sketch { display: grid; gap: 0.4rem; }
+  .sketch svg {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  .sketch figcaption { color: var(--ink-2); font-weight: 700; }
+  .legend { display: grid; gap: 0.35rem; }
+  .legend .num { font-size: 0.8em; }
+
+  .checks { display: grid; gap: 0.35rem; }
+  .checks > li { position: relative; padding-left: 1.1em; }
+  .checks > li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent);
+    font-weight: 900;
+  }
+  .fixes { display: grid; gap: 0.8rem; }
+  .fixes > li { display: grid; gap: 0.25rem; }
+  .fix-when { font-weight: 900; }
+  .addon {
+    padding: 0.35rem 0.6rem;
+    border-radius: var(--radius);
+    background: var(--wash);
+    -webkit-user-select: all;
+    user-select: all;
+  }
+
+  .foot {
+    display: grid;
+    gap: 0.3rem;
+    padding-top: 0.8rem;
+    border-top: 3px solid var(--ink);
+    color: var(--ink-2);
+    font-weight: 700;
+  }
+
+  @media (max-width: 520px) {
+    .card, .three-box { padding: 0.55rem 0.6rem; }
+  }
+</style>
+</head>
+<body>
+<main class="page" lang="ko">
+  <header class="masthead">
+    <p class="eyebrow">사랑의교회 · 큰 글씨 주보</p>
+    <h1>주일예배</h1>
+    <p class="when">2026년 9월 27일 주일</p>
+
+    <div class="tools" role="group" aria-labelledby="size-label">
+      <p class="tools-label" id="size-label">글씨 크기<output class="size-now" id="size-now" aria-live="polite">보통</output></p>
+      <div class="tools-row">
+        <button type="button" class="btn" id="size-down">− 작게</button>
+        <button type="button" class="btn" id="size-up">크게 +</button>
+      </div>
+    </div>
+
+    <nav class="jump" id="tabs" aria-label="화면 고르기">
+      <a href="#worship"><span class="num">1</span>예배 순서</a>
+      <a href="#news"><span class="num">2</span>소식과 기도</a>
+      <a href="#picture"><span class="num">3</span>그림 만들기</a>
+    </nav>
+  </header>
+
+  <!-- 화면 1 -->
+  <section class="screen" id="worship" aria-labelledby="s1">
+    <div class="screen-head">
+      <span class="num" aria-hidden="true">1</span>
+      <h2 id="s1">예배 순서</h2>
+    </div>
+
+    <article class="card card--accent" aria-labelledby="sermon-title">
+      <p class="kicker">추석 특별 설교</p>
+      <h3 class="sermon-title" id="sermon-title">“주님은 나의 모든 것을 아시나이다”</h3>
+      <dl class="pairs">
+        <div><dt>성경</dt><dd>시편 139편 1~6절</dd></div>
+        <div><dt>설교</dt><dd>오정현 목사</dd></div>
+      </dl>
+    </article>
+
+    <section class="stack" aria-labelledby="verse-title">
+      <h3 class="block-title" id="verse-title">이번 주 말씀</h3>
+      <figure class="verse">
+        <blockquote><p>여호와여 주께서 나를 살펴 보셨으므로 나를 아시나이다</p></blockquote>
+        <figcaption>시편 139편 1절</figcaption>
+      </figure>
+      <figure class="verse">
+        <blockquote><p>이 지식이 내게 너무 기이하니 높아서 내가 능히 미치지 못하나이다</p></blockquote>
+        <figcaption>시편 139편 6절</figcaption>
+      </figure>
+      <div class="plain">
+        <p class="plain-label">쉬운 말로 읽으면</p>
+        <p>하나님, 주님은 나를 살펴보셔서 나를 다 아십니다. 주님이 나를 이렇게 다 아시는 것이 너무 놀라워서 나는 다 헤아릴 수가 없습니다.</p>
+      </div>
+    </section>
+
+    <section class="stack" aria-labelledby="order-title">
+      <h3 class="block-title" id="order-title">예배는 이렇게 드립니다</h3>
+      <ol class="steps">
+        <li>
+          <p class="step-name"><span class="num lead-num">1</span>찬양</p>
+          <p>1~3부는 아래 찬송을 다 함께 부릅니다.</p>
+          <ul class="hymns">
+            <li>
+              <p class="hymn-ref">찬송가<span class="hymn-no">292장</span></p>
+              <p class="hymn-title">주 없이 살 수 없네</p>
+            </li>
+            <li>
+              <p class="hymn-ref">기쁨으로찬양<span class="hymn-no">164장</span></p>
+              <p class="hymn-title">두 손 들고 찬양합니다</p>
+            </li>
+            <li>
+              <p class="hymn-ref">기쁨으로찬양<span class="hymn-no">501장</span></p>
+              <p class="hymn-title">주의 이름 송축하리</p>
+            </li>
+          </ul>
+          <p class="aside">4부는 쉐키나찬양단이 찬양을 인도합니다.</p>
+        </li>
+        <li>
+          <p class="step-name"><span class="num lead-num">2</span>대표 기도</p>
+          <p>부마다 기도하시는 분이 달라요. 아래 부별 안내를 보세요.</p>
+        </li>
+        <li>
+          <p class="step-name"><span class="num lead-num">3</span>찬양대 찬양</p>
+          <p>부마다 찬양대와 노래가 달라요.</p>
+        </li>
+        <li>
+          <p class="step-name"><span class="num lead-num">4</span>말씀</p>
+          <p>오정현 목사 · 시편 139편 1~6절</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="stack" aria-labelledby="services-title">
+      <h3 class="block-title" id="services-title">부별 안내</h3>
+      <p>내가 드리는 예배 시간을 찾아보세요.</p>
+      <div class="services">
+        <article class="card" aria-label="1부 예배">
+          <p class="service-top"><span class="pill">1부</span><span class="service-time">오전 8시</span></p>
+          <p class="service-pre">찬양은 오전 7시 40분부터</p>
+          <dl class="facts">
+            <div><dt>예배 인도</dt><dd>임병영 목사</dd></div>
+            <div><dt>대표 기도</dt><dd>김주혁 목사</dd></div>
+            <div><dt>찬양대</dt><dd>영광 찬양대<br>「예수는 모퉁이 돌」</dd></div>
+          </dl>
+        </article>
+        <article class="card" aria-label="2부 예배">
+          <p class="service-top"><span class="pill">2부</span><span class="service-time">오전 10시</span></p>
+          <p class="service-pre">찬양은 오전 9시 40분부터</p>
+          <dl class="facts">
+            <div><dt>예배 인도</dt><dd>이기호 목사</dd></div>
+            <div><dt>대표 기도</dt><dd>박천진 장로</dd></div>
+            <div><dt>찬양대</dt><dd>호산나 찬양대<br>「속죄하신 구세주를」</dd></div>
+          </dl>
+        </article>
+        <article class="card" aria-label="3부 예배">
+          <p class="service-top"><span class="pill">3부</span><span class="service-time">낮 12시</span></p>
+          <p class="service-pre">찬양은 오전 11시 45분부터</p>
+          <dl class="facts">
+            <div><dt>예배 인도</dt><dd>장단희 목사</dd></div>
+            <div><dt>대표 기도</dt><dd>이철민 장로</dd></div>
+            <div><dt>찬양대</dt><dd>할렐루야 찬양대<br>「나 무엇과도 주님을 바꾸지 않으리」</dd></div>
+          </dl>
+        </article>
+        <article class="card" aria-label="4부 예배">
+          <p class="service-top"><span class="pill">4부</span><span class="service-time">오후 2시 30분</span></p>
+          <p class="service-pre">찬양은 오후 2시 15분부터</p>
+          <dl class="facts">
+            <div><dt>예배 인도</dt><dd>임상규 목사</dd></div>
+            <div><dt>찬양 인도</dt><dd>쉐키나찬양단</dd></div>
+            <div><dt>대표 기도</dt><dd>최희선 권사</dd></div>
+            <div><dt>찬양대</dt><dd>시온 찬양대<br>「옷자락에서 전해지는 사랑」</dd></div>
+          </dl>
+        </article>
+      </div>
+      <p class="aside">수어 통역은 주일 3부 예배에 있어요. 자리는 본당 1층 남쪽 출입구 옆입니다.</p>
+    </section>
+
+    <section class="stack" aria-labelledby="confess-title">
+      <h3 class="block-title" id="confess-title">함께 드리는 고백</h3>
+      <p class="muted">주보에 실린 공동체 고백을 한 문장씩 나눠 적었어요.</p>
+      <ul class="confession">
+        <li>우리는 세상으로부터 부름받은 하나님의 백성입니다.</li>
+        <li>또한 세상으로 보냄받은 그리스도의 제자입니다.</li>
+        <li>보냄받은 소명자로서 하나님을 기쁘게 찬양하는 성령 충만한 예배자가 되겠습니다.</li>
+        <li>진리를 배우고 수호하는 은혜에 빚진 훈련자가 되겠습니다.</li>
+        <li>땅 끝까지 복음을 전파하는 전도자가 되겠습니다.</li>
+        <li>이웃의 아픔을 함께하는 치유자가 되겠습니다.</li>
+        <li>온 성도가 하나 되는 화해자가 되겠습니다.</li>
+        <li>사회적 책임을 다하는 소명자가 되겠습니다.</li>
+        <li>그리하여 주의 나라가 이 땅에 임하며, 하나님을 영화롭게 하는 사랑의 공동체가 되겠습니다.</li>
+      </ul>
+    </section>
+
+    <section class="stack" aria-labelledby="week-title">
+      <h3 class="block-title" id="week-title">주중 예배와 기도회</h3>
+      <ul class="week">
+        <li>
+          <p class="week-name">새벽기도회</p>
+          <p class="week-time">월~금 새벽 5시 20분</p>
+          <p>이번 주 말씀을 전하실 분</p>
+          <ul class="preachers">
+            <li>9월 28일(월) 강건우 목사</li>
+            <li>9월 29일(화) 강대인 목사</li>
+            <li>9월 30일(수) 이재영 목사</li>
+            <li>10월 1일(목) 김영석 목사</li>
+            <li>10월 2일(금) 권진우 목사</li>
+          </ul>
+        </li>
+        <li>
+          <p class="week-name">토요비전새벽예배</p>
+          <p class="week-time">토요일 오전 6시 30분</p>
+          <p>말씀 오정현 목사. 온 가족 4대가 함께 모여 기도하는 새벽 예배예요.</p>
+        </li>
+        <li>
+          <p class="week-name">수요 저녁 기도회</p>
+          <p class="week-time">수요일 저녁 7시 30분</p>
+          <p>유선비 목사 「하나님을 향유하는 기도」<br>창세기 29장 31~35절</p>
+          <p class="aside">향유: 마음껏 누린다는 뜻</p>
+        </li>
+        <li>
+          <p class="week-name">쥬빌리 통일구국기도회</p>
+          <p class="week-time">목요일 저녁 7시 20분</p>
+          <p>1130차 · 신영숙 대표 · 강남예배당<br>나라와 통일을 위해 기도하는 모임이에요.</p>
+        </li>
+        <li>
+          <p class="week-name">사랑글로벌기도회</p>
+          <p class="week-time">금요일 저녁 8시</p>
+          <p>이재영 목사 「쳐다본즉 살리라」<br>민수기 21장 4~9절</p>
+        </li>
+        <li>
+          <p class="week-name">다락방 공부</p>
+          <p class="week-time">「예수님은 누구신가」 10과</p>
+          <p>산돌, 모퉁잇돌 되시는 예수 그리스도<br>다니엘 2장 34~35절, 베드로전서 2장 4~8절</p>
+        </li>
+      </ul>
+    </section>
+
+    <a class="next" href="#news">다음 화면: 소식과 기도 <span aria-hidden="true">→</span></a>
+  </section>
+
+  <!-- 화면 2 -->
+  <section class="screen" id="news" aria-labelledby="s2">
+    <div class="screen-head">
+      <span class="num" aria-hidden="true">2</span>
+      <h2 id="s2">이번 주 소식과 기도</h2>
+    </div>
+
+    <section class="three-box" aria-labelledby="three-title">
+      <h3 class="block-title" id="three-title">꼭 기억하실 세 가지</h3>
+      <ol class="three">
+        <li><p><span class="num lead-num">1</span><strong>10월 4일 주일까지</strong> 「로이스 말씀학교」를 신청하세요. 할머니·할아버지와 손주가 함께 배워요.</p></li>
+        <li><p><span class="num lead-num">2</span><strong>10월 19일 월요일부터 24일 토요일까지</strong> 가을 특별새벽부흥회가 열려요.</p></li>
+        <li><p><span class="num lead-num">3</span><strong>10월 26일 월요일과 27일 화요일</strong>은 ‘한국교회 섬김의 날’이에요. 기도와 봉사로 섬겨요.</p></li>
+      </ol>
+    </section>
+
+    <section class="stack" aria-labelledby="news-title">
+      <h3 class="block-title" id="news-title">자세한 소식</h3>
+      <div class="news">
+        <article class="card" aria-labelledby="n1">
+          <p class="tag">오늘 9월 27일</p>
+          <h4 class="news-title" id="n1">추석 잔치 전통놀이</h4>
+          <ul class="lines">
+            <li>사랑글로벌광장에서 윷놀이, 제기차기, 널뛰기를 해요.</li>
+            <li>오전 9~10시, 오전 11시~낮 12시, 오후 1~2시, 세 번 열려요.</li>
+            <li>추석을 보낸 온 가족 4대가 함께 오세요.</li>
+          </ul>
+        </article>
+
+        <article class="card" aria-labelledby="n2">
+          <p class="tag">9월 28일 월요일</p>
+          <h4 class="news-title" id="n2">권사회 정기 모임</h4>
+          <ul class="lines">
+            <li>제4권사회: 오전 10시, 디모데홀 1 (S701)</li>
+            <li>제5권사회: 오전 10시, 다니엘홀 1 (S601)</li>
+          </ul>
+        </article>
+
+        <article class="card" aria-labelledby="n3">
+          <p class="tag">10월 4일 주일</p>
+          <h4 class="news-title" id="n3">나눔의 날 물건 모으기</h4>
+          <ul class="lines">
+            <li>오전 7시 30분~오후 2시, 미션센터(북) 1층 보안실 앞에서 받아요.</li>
+            <li>옷, 잡화, 작은 생활용품을 모읍니다.</li>
+            <li>되도록 새것에 가까운 물건으로 보내 주세요.</li>
+          </ul>
+        </article>
+
+        <article class="card" aria-labelledby="n4">
+          <p class="tag">10월 10일 시작</p>
+          <h4 class="news-title" id="n4">로이스 말씀학교</h4>
+          <p class="news-sub">조부모와 손주가 함께하는 성경 학교</p>
+          <ul class="lines">
+            <li>친가·외가 할머니, 할아버지와 3~6살 손주가 함께 배워요.</li>
+            <li>11월 28일까지 8주 동안, 매주 토요일 오전 9~11시 · 사무엘홀 1 (S301)</li>
+            <li>10월 4일 주일까지 신청 · 회비 5만 원(교재비와 간식비)</li>
+          </ul>
+          <p class="ask"><b>문의</b>02-3495-1125 · 드림센터(남) 1층 로비 안내 부스</p>
+        </article>
+
+        <article class="card" aria-labelledby="n5">
+          <p class="tag">10월 16일~17일</p>
+          <h4 class="news-title" id="n5">중보기도학교 (제83기)</h4>
+          <ul class="lines">
+            <li>교회와 나라, 세계를 위해 기도하는 법을 배우는 학교예요.</li>
+            <li>10월 16일 금요일부터 17일 토요일까지 은혜채플에서 열려요.</li>
+            <li>오늘과 10월 4일 주일에 드림센터(남) 1층, 미션센터(북) 지하 1층에서 신청하세요. 인터넷 신청은 10월 9일 금요일까지예요.</li>
+          </ul>
+        </article>
+
+        <article class="card" aria-labelledby="n6">
+          <p class="tag">10월 19일~30일</p>
+          <h4 class="news-title" id="n6">10월 교회 일정</h4>
+          <ul class="lines">
+            <li>19일(월)~24일(토) 가을 특별새벽부흥회</li>
+            <li>25일(주일) 종교개혁 509주년 기념 주일</li>
+            <li>26일(월)~27일(화) 한국교회 섬김의 날, 28일(수)~30일(금) 세계 개혁교회 모임(WRF 서울총회)</li>
+          </ul>
+        </article>
+
+        <article class="card" aria-labelledby="n7">
+          <p class="tag">10월 26일~27일</p>
+          <h4 class="news-title" id="n7">한국교회 섬김의 날</h4>
+          <ul class="lines">
+            <li>전국의 목회자·사모·선교사 7천 명이 우리 교회에 옵니다.</li>
+            <li>날마다 드리는 기도, 집을 숙소로 내어 드리는 홈스테이, 숙소 헌금으로 섬길 수 있어요.</li>
+            <li>현장 봉사는 순장반·권사회 등 각 부서가 맡은 봉사 자리에 지원하세요.</li>
+          </ul>
+        </article>
+
+        <article class="card" aria-labelledby="n8">
+          <p class="tag">11월 4일까지</p>
+          <h4 class="news-title" id="n8">김덕기 작가 그림 전시</h4>
+          <ul class="lines">
+            <li>「가족, 모든 계절의 기록」이라는 주제의 초대전이에요.</li>
+            <li>수요일·토요일·주일에 사랑아트갤러리에서 볼 수 있어요.</li>
+            <li>가족과 일상의 따뜻한 순간을 밝고 풍부한 색으로 그린 그림들입니다.</li>
+          </ul>
+          <p class="ask"><b>문의</b>02-3495-1458</p>
+        </article>
+
+        <article class="card" aria-labelledby="n9">
+          <p class="tag">11월 7일 토요일</p>
+          <h4 class="news-title" id="n9">온다 페스티벌</h4>
+          <p class="news-sub">학교 가기 전 어린이를 위한 전도 잔치</p>
+          <ul class="lines">
+            <li>아기부터 유치원생까지, 어린이가 있는 가정을 교회로 초대해요.</li>
+            <li>오전 9시 30분~낮 12시 · 사무엘홀 1 (S301) · 무료</li>
+            <li>11월 1일 주일까지 신청하세요. 전도할 가정이 없어도 신청할 수 있어요.</li>
+          </ul>
+          <p class="ask"><b>문의</b>02-3495-1125</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="stack" aria-labelledby="joy-title">
+      <h3 class="block-title" id="joy-title">기쁨과 위로를 나눠요</h3>
+      <ul class="lines">
+        <li>10월 3일 토요일에 네 가정이 결혼해요. 축하해 주세요.</li>
+        <li>일곱 가정에 장례가 있었습니다. 유가족을 위로해 주세요.</li>
+        <li>새가족 39명이 등록했어요. 반갑게 맞아 주세요.</li>
+      </ul>
+      <p class="ask"><b>경조사 연락</b>02-3495-1195 · 언제든 연락할 수 있어요</p>
+    </section>
+
+    <article class="card card--accent" aria-labelledby="pray-title">
+      <h3 class="block-title" id="pray-title">함께 드릴 기도</h3>
+      <ol class="prayers">
+        <li><p><span class="num num--light lead-num">1</span>‘한국교회 섬김의 날’(10월 26~27일)을 위해 날마다 기도해 주세요.</p></li>
+        <li><p><span class="num num--light lead-num">2</span>세계 개혁교회 모임(WRF 서울총회, 10월 28~30일)과 섬김의 날을 앞두고 온 성도가 마음을 모아 준비하도록 기도해 주세요.</p></li>
+        <li><p><span class="num num--light lead-num">3</span>학교 가기 전 어린이들이 복음의 기쁨을 누리고 하나님이 주신 꿈을 품도록 기도해 주세요. (11월 7일 온다 페스티벌)</p></li>
+      </ol>
+    </article>
+
+    <a class="next" href="#picture">다음 화면: 성경 그림 만들기 <span aria-hidden="true">→</span></a>
+  </section>
+
+  <!-- 화면 3 -->
+  <section class="screen" id="picture" aria-labelledby="s3">
+    <div class="screen-head">
+      <span class="num" aria-hidden="true">3</span>
+      <h2 id="s3">성경 그림 만들기</h2>
+    </div>
+    <p class="screen-note">주보를 만드는 분을 위한 화면이에요.</p>
+    <p>이번 주 설교 「주님은 나의 모든 것을 아시나이다」(시편 139편 1~6절)에 어울리는 그림을 그림 AI에게 부탁하는 영어 문장입니다. 복사해서 ChatGPT나 Gemini처럼 그림을 그려 주는 AI에 붙여 넣으세요.</p>
+
+    <section class="card" aria-labelledby="prompt-title">
+      <h3 class="block-title" id="prompt-title">그림 AI에 넣을 문장</h3>
+      <p class="muted">번호는 뜻 풀이를 찾기 쉽게 붙였어요. 복사하면 번호 없이 문장만 들어가요.</p>
+      <ol class="prompt" id="prompt" lang="en">
+        <li><span class="num" aria-hidden="true">1</span><span class="ps">A warm, gentle watercolor illustration for a church bulletin, inspired by Psalm 139:1-6, "Lord, You Know Everything About Me."</span></li>
+        <li><span class="num" aria-hidden="true">2</span><span class="ps">Jesus, in a simple cream-colored robe, sits on a low wooden bench in a quiet Korean autumn courtyard at sunset with two elderly Korean women and one elderly man in soft-colored hanbok.</span></li>
+        <li><span class="num" aria-hidden="true">3</span><span class="ps">Jesus smiles kindly and rests his hand gently on the shoulder of one grandmother, who looks up at him with peaceful joy.</span></li>
+        <li><span class="num" aria-hidden="true">4</span><span class="ps">The grandfather holds an open Bible on his lap, and the other grandmother folds her hands in prayer.</span></li>
+        <li><span class="num" aria-hidden="true">5</span><span class="ps">Behind them, a persimmon tree heavy with orange fruit and a large full harvest moon suggest Chuseok.</span></li>
+        <li><span class="num" aria-hidden="true">6</span><span class="ps">Style: soft watercolor washes with clear, dark ink outlines, warm golden light, a simple uncluttered composition, and large shapes that are easy to see.</span></li>
+        <li><span class="num" aria-hidden="true">7</span><span class="ps">Friendly, gentle faces, with strong contrast between the figures and the background so the picture stays clear for older eyes and in black-and-white printing.</span></li>
+        <li><span class="num" aria-hidden="true">8</span><span class="ps">Landscape format, 3:2. No text, letters, or words anywhere in the image.</span></li>
+      </ol>
+      <div class="prompt-actions">
+        <button type="button" class="btn btn--solid" id="copy-prompt">문장 복사하기</button>
+        <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+      </div>
+      <textarea class="prompt-fallback" id="prompt-fallback" rows="8" readonly hidden aria-label="복사할 영어 문장"></textarea>
+    </section>
+
+    <section class="stack" aria-labelledby="meaning-title">
+      <h3 class="block-title" id="meaning-title">번호별 뜻 풀이</h3>
+      <ol class="meaning">
+        <li><span class="num lead-num">1</span>교회 주보에 넣을 따뜻하고 부드러운 수채화 그림이에요. 시편 139편 1~6절 “주님은 나의 모든 것을 아시나이다”에서 떠올린 장면입니다.</li>
+        <li><span class="num lead-num">2</span>수수한 크림색 옷을 입으신 예수님이 해 질 녘 조용한 한국의 가을 마당, 낮은 나무 평상에 고운 한복 차림의 할머니 두 분, 할아버지 한 분과 함께 앉아 계십니다.</li>
+        <li><span class="num lead-num">3</span>예수님이 다정하게 웃으시며 한 할머니의 어깨에 살며시 손을 얹으시고, 할머니는 평안하고 기쁜 얼굴로 예수님을 올려다봅니다.</li>
+        <li><span class="num lead-num">4</span>할아버지는 무릎 위에 성경을 펴 들고, 다른 할머니는 두 손을 모아 기도합니다.</li>
+        <li><span class="num lead-num">5</span>뒤로는 주황색 감이 주렁주렁 달린 감나무와 커다란 보름달이 보여 추석 느낌이 납니다.</li>
+        <li><span class="num lead-num">6</span>그림 느낌: 부드러운 수채화 물감에 또렷하고 진한 먹선, 따뜻한 금빛, 복잡하지 않은 구도, 한눈에 들어오는 큼직한 모양.</li>
+        <li><span class="num lead-num">7</span>얼굴은 친근하고 온화하게 그리고, 인물과 배경의 밝고 어두움을 뚜렷하게 나눠서 어르신 눈에도, 흑백으로 인쇄해도 또렷하게 보이게 합니다.</li>
+        <li><span class="num lead-num">8</span>가로 그림(가로 3 : 세로 2)이고, 그림 안에는 글자를 하나도 넣지 않습니다.</li>
+      </ol>
+    </section>
+
+    <section class="stack" aria-labelledby="guide-title">
+      <h3 class="block-title" id="guide-title">완성 예시 가이드</h3>
+      <figure class="sketch">
+        <svg viewBox="0 0 600 400" role="img" aria-labelledby="sk-t sk-d">
+          <title id="sk-t">그림 구도 예시</title>
+          <desc id="sk-d">해 질 녘 가을 마당의 나무 평상 가운데에 예수님이 앉아 왼쪽 할머니 어깨에 손을 얹고 계십니다. 맨 왼쪽 할아버지는 성경을 펴 들고, 오른쪽 할머니는 두 손을 모아 기도합니다. 뒤로 감나무와 보름달이 보입니다.</desc>
+          <defs>
+            <radialGradient id="sk-glow" cx="48%" cy="50%" r="62%">
+              <stop offset="0" stop-color="#fff1cc"/>
+              <stop offset="1" stop-color="#ffffff"/>
+            </radialGradient>
+          </defs>
+          <rect x="2" y="2" width="596" height="396" rx="14" fill="url(#sk-glow)" stroke="#3a2f33" stroke-width="4"/>
+          <circle cx="295" cy="200" r="80" fill="#ffe7a3" opacity="0.55"/>
+          <circle cx="420" cy="80" r="40" fill="#fff6dc" stroke="#3a2f33" stroke-width="3"/>
+          <path d="M532 330 C528 292 536 252 528 212" fill="none" stroke="#3a2f33" stroke-width="10" stroke-linecap="round"/>
+          <ellipse cx="530" cy="176" rx="56" ry="46" fill="#ffffff" stroke="#3a2f33" stroke-width="3"/>
+          <g fill="#e07a1f" stroke="#3a2f33" stroke-width="1.5">
+            <circle cx="506" cy="170" r="7"/>
+            <circle cx="530" cy="194" r="7"/>
+            <circle cx="554" cy="166" r="7"/>
+            <circle cx="540" cy="146" r="7"/>
+            <circle cx="512" cy="197" r="7"/>
+          </g>
+          <line x1="18" y1="330" x2="582" y2="330" stroke="#3a2f33" stroke-width="3"/>
+          <path d="M84 294 V330 M456 294 V330" fill="none" stroke="#3a2f33" stroke-width="6" stroke-linecap="round"/>
+          <rect x="62" y="276" width="416" height="20" rx="5" fill="#ffffff" stroke="#3a2f33" stroke-width="3"/>
+          <g fill="#ffffff" stroke="#3a2f33" stroke-width="3">
+            <path d="M83 276 C83 240 95 224 115 224 C135 224 147 240 147 276 Z"/>
+            <circle cx="115" cy="198" r="22"/>
+            <path d="M170 276 C170 244 181 228 200 228 C219 228 230 244 230 276 Z"/>
+            <circle cx="200" cy="203" r="21"/>
+            <circle cx="184" cy="192" r="8"/>
+            <path d="M255 276 C255 228 270 206 295 206 C320 206 335 228 335 276 Z"/>
+            <circle cx="295" cy="176" r="26"/>
+            <path d="M355 276 C355 244 366 228 385 228 C404 228 415 244 415 276 Z"/>
+            <circle cx="385" cy="203" r="21"/>
+            <circle cx="401" cy="192" r="8"/>
+          </g>
+          <g fill="#ffffff" stroke="#3a2f33" stroke-width="2.5">
+            <path d="M97 252 L115 256 L133 252 L133 268 L115 272 L97 268 Z"/>
+            <path d="M379 262 L385 240 L391 262 Z"/>
+          </g>
+          <path d="M115 256 V272" fill="none" stroke="#3a2f33" stroke-width="2.5"/>
+          <path d="M263 226 C247 213 229 214 215 230" fill="none" stroke="#3a2f33" stroke-width="7" stroke-linecap="round"/>
+          <g font-family="Noto Sans KR, Apple SD Gothic Neo, Malgun Gothic, sans-serif" font-size="20" font-weight="900" text-anchor="middle">
+            <circle cx="115" cy="152" r="17" fill="#b0003a"/>
+            <text x="115" y="159" fill="#ffffff">1</text>
+            <circle cx="200" cy="158" r="17" fill="#b0003a"/>
+            <text x="200" y="165" fill="#ffffff">2</text>
+            <circle cx="295" cy="126" r="17" fill="#b0003a"/>
+            <text x="295" y="133" fill="#ffffff">3</text>
+            <circle cx="385" cy="158" r="17" fill="#b0003a"/>
+            <text x="385" y="165" fill="#ffffff">4</text>
+            <circle cx="530" cy="112" r="17" fill="#b0003a"/>
+            <text x="530" y="119" fill="#ffffff">5</text>
+            <circle cx="420" cy="80" r="17" fill="#b0003a"/>
+            <text x="420" y="87" fill="#ffffff">6</text>
+          </g>
+        </svg>
+        <figcaption>실제 그림이 아니라, 완성 그림에서 사람과 사물이 놓일 자리를 간단히 그린 예시예요.</figcaption>
+      </figure>
+      <ol class="legend">
+        <li><span class="num lead-num">1</span>성경을 펴 든 할아버지</li>
+        <li><span class="num lead-num">2</span>예수님이 어깨에 손을 얹으신 할머니</li>
+        <li><span class="num lead-num">3</span>가운데 앉으신 예수님</li>
+        <li><span class="num lead-num">4</span>두 손 모아 기도하는 할머니</li>
+        <li><span class="num lead-num">5</span>주황색 감이 달린 감나무</li>
+        <li><span class="num lead-num">6</span>추석 보름달</li>
+      </ol>
+
+      <h4 class="sub-title">이렇게 나오면 잘 된 그림이에요</h4>
+      <ul class="checks">
+        <li>예수님이 가운데에서 어르신들과 함께 앉아 계세요.</li>
+        <li>예수님 손이 할머니 어깨에 얹혀 있어요. 시편 139편 5절 “내게 안수하셨나이다”를 떠올리게 해요.</li>
+        <li>감나무와 보름달이 있어 추석 느낌이 나요.</li>
+        <li>선이 또렷하고 색이 따뜻한 수채화예요.</li>
+        <li>그림 안에 글자가 없어요. 글자는 주보에서 따로 넣으세요.</li>
+      </ul>
+
+      <h4 class="sub-title">마음에 들지 않으면 이 문장을 덧붙여 보세요</h4>
+      <ul class="fixes">
+        <li>
+          <p class="fix-when">그림에 글자가 들어갔을 때</p>
+          <p class="addon" lang="en">Remove all text and letters from the image.</p>
+          <p class="muted">뜻: 그림 속 글자를 모두 지워 주세요.</p>
+        </li>
+        <li>
+          <p class="fix-when">너무 흐리거나 어두울 때</p>
+          <p class="addon" lang="en">Make it brighter, with darker and clearer outlines.</p>
+          <p class="muted">뜻: 더 밝게, 선은 더 진하고 또렷하게 해 주세요.</p>
+        </li>
+        <li>
+          <p class="fix-when">사람이 많고 복잡할 때</p>
+          <p class="addon" lang="en">Show only Jesus and three elderly people, with a simpler background.</p>
+          <p class="muted">뜻: 예수님과 어르신 세 분만 그리고, 배경은 더 단순하게 해 주세요.</p>
+        </li>
+        <li>
+          <p class="fix-when">얼굴이 어색할 때</p>
+          <p class="addon" lang="en">Make the faces softer and warmer, with gentle smiles.</p>
+          <p class="muted">뜻: 얼굴을 더 부드럽고 따뜻하게, 잔잔한 미소로 그려 주세요.</p>
+        </li>
+      </ul>
+
+      <h4 class="sub-title">주보에 넣을 때</h4>
+      <ul class="lines">
+        <li>가로로 긴 그림이라 주보 첫 장의 설교 제목 위에 넣으면 잘 어울려요.</li>
+        <li>흑백으로 인쇄한다면 먼저 한 장 뽑아서 얼굴과 선이 또렷한지 보세요.</li>
+        <li>같은 문장으로도 그릴 때마다 그림이 달라져요. 두세 번 만들어 보고 가장 따뜻한 그림을 고르세요.</li>
+      </ul>
+    </section>
+
+    <a class="next" href="#worship">처음 화면으로 <span aria-hidden="true">↑</span></a>
+  </section>
+
+  <footer class="foot">
+    <p>사랑의교회 2026년 9월 27일 주보를 어르신들이 읽기 쉽게 큰 글씨로 옮긴 페이지예요. 정확한 내용은 원래 주보에서 확인해 주세요.</p>
+    <p>교회 대표 전화 02-3495-1000</p>
+  </footer>
+</main>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+
+    /* 글씨 크기 */
+    var steps = [1, 1.2, 1.4];
+    var names = ["보통", "크게", "아주 크게"];
+    var key = "dotbogi-jubo-size";
+    var i = 0;
+    try {
+      var saved = parseInt(localStorage.getItem(key), 10);
+      if (saved >= 0 && saved < steps.length) i = saved;
+    } catch (e) {}
+
+    var up = document.getElementById("size-up");
+    var down = document.getElementById("size-down");
+    var now = document.getElementById("size-now");
+
+    function applySize(save) {
+      root.style.setProperty("--scale", String(steps[i]));
+      now.textContent = names[i];
+      down.disabled = i === 0;
+      up.disabled = i === steps.length - 1;
+      if (save) {
+        try { localStorage.setItem(key, String(i)); } catch (e) {}
+      }
+    }
+    up.addEventListener("click", function () {
+      if (i < steps.length - 1) { i += 1; applySize(true); }
+    });
+    down.addEventListener("click", function () {
+      if (i > 0) { i -= 1; applySize(true); }
+    });
+    applySize(false);
+
+    /* 화면 1·2·3: 한 번에 한 화면만 보여 준다 */
+    var screens = Array.prototype.slice.call(document.querySelectorAll(".screen"));
+    var tabLinks = Array.prototype.slice.call(document.querySelectorAll("#tabs a"));
+    var tabs = document.getElementById("tabs");
+
+    function isScreen(id) {
+      return screens.some(function (s) { return s.id === id; });
+    }
+    function showScreen(id, scroll) {
+      if (!isScreen(id)) id = screens[0].id;
+      screens.forEach(function (s) { s.hidden = s.id !== id; });
+      tabLinks.forEach(function (a) {
+        if (a.getAttribute("href") === "#" + id) a.setAttribute("aria-current", "true");
+        else a.removeAttribute("aria-current");
+      });
+      if (scroll) tabs.scrollIntoView({ block: "start" });
+    }
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest ? e.target.closest("a[href^='#']") : null;
+      if (!a) return;
+      var id = a.getAttribute("href").slice(1);
+      if (!isScreen(id)) return;
+      e.preventDefault();
+      showScreen(id, true);
+      try { history.replaceState(null, "", "#" + id); } catch (err) {}
+    });
+    showScreen((location.hash || "").slice(1), false);
+
+    /* 그림 문장 복사 */
+    var copyBtn = document.getElementById("copy-prompt");
+    var status = document.getElementById("copy-status");
+    var fallbackBox = document.getElementById("prompt-fallback");
+    var promptText = Array.prototype.slice.call(document.querySelectorAll("#prompt .ps"))
+      .map(function (s) { return s.textContent.replace(/\s+/g, " ").trim(); })
+      .join(" ");
+
+    function showFallback() {
+      fallbackBox.value = promptText;
+      fallbackBox.hidden = false;
+      fallbackBox.focus();
+      fallbackBox.select();
+      status.textContent = "아래 상자의 문장을 선택해 두었어요. 길게 눌러 복사하세요.";
+    }
+    copyBtn.addEventListener("click", function () {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(promptText).then(function () {
+          fallbackBox.hidden = true;
+          status.textContent = "복사했어요. 그림 AI 입력창에 붙여 넣으세요.";
+        }, showFallback);
+      } else {
+        showFallback();
+      }
+    });
+  })();
+</script>
+</body>
+</html>
