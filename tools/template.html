@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>돋보기 주보</title>
+<meta name="description" content="{{DESCRIPTION}}">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#e4004c">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{OG_TITLE}}">
+<meta property="og:description" content="{{OG_DESCRIPTION}}">
+<meta property="og:url" content="{{PAGE_URL}}">
+<meta property="og:image" content="{{SITE_URL}}og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23e4004c'/%3E%3Ccircle cx='28' cy='28' r='13' fill='none' stroke='%23fff' stroke-width='6'/%3E%3Cpath d='M38 38l12 12' stroke='%23fff' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700;900&family=Noto+Serif+KR:wght@700;900&display=swap">
+<style>
+  /* 흰 바탕·검정·사랑의교회 빨강(로고 #e4004c)만 쓰는 고대비 단일 테마 */
+  :root {
+    --paper: #ffffff;
+    --ink: #141013;
+    --ink-2: #3a2f33;
+    --brand: #e4004c;     /* 로고 빨강: 띠, 테두리, 점 같은 장식 */
+    --accent: #b0003a;    /* 짙은 빨강: 글씨와 색칠한 카드 (흰 바탕 대비 7.2:1) */
+    --accent-2: #8f0030;
+    --wash: #fdeef2;
+    --press: #ffe3ea;
+    --line: #f1c6d2;
+    --on-accent: #ffffff;
+    --on-accent-2: #ffd6e2;
+    --scale: 1;
+    --radius: 12px;
+    --sans: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
+    --serif: "Noto Serif KR", "AppleMyungjo", "Batang", "바탕", serif;
+    font-size: calc(32px * var(--scale)); /* 본문 24pt */
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :root { scroll-behavior: auto; }
+  }
+  *, *::before, *::after { box-sizing: border-box; min-width: 0; }
+  body { margin: 0; }
+  [hidden] { display: none !important; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.6;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  body::before {
+    content: "";
+    display: block;
+    height: 14px;
+    background: var(--brand);
+  }
+  h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
+  ul, ol { padding: 0; list-style: none; }
+  strong { font-weight: 900; }
+  :focus-visible { outline: 4px solid var(--ink); outline-offset: 4px; }
+
+  .page {
+    max-width: 960px; /* 글씨 크기를 바꿔도 페이지 폭은 그대로 */
+    margin-inline: auto;
+    padding-inline: 20px;
+    padding-block: 16px 2.5rem;
+    display: grid;
+    gap: 2rem;
+  }
+  .stack { display: grid; gap: 0.6rem; }
+
+  /* 머리 */
+  .masthead { display: grid; gap: 0.3rem; }
+  .eyebrow { color: var(--accent); font-weight: 700; }
+  .masthead h1 {
+    font-size: min(2.25rem, 21vw); /* 휴대폰에서 글씨를 키워도 한 줄에 */
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .when { font-weight: 900; }
+
+  /* 글씨 크기 조절: 글씨를 키워도 버튼 자리가 움직이지 않게 px로 고정 */
+  .sizebar {
+    display: grid;
+    gap: 10px;
+    max-width: 560px;
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: var(--wash);
+    font-size: 26px;
+    line-height: 1.3;
+  }
+  .sizebar-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 12px;
+  }
+  .sizebar-label { font-weight: 700; }
+  .sizebar-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 8px;
+  }
+  .size-now {
+    width: 3.6em;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .sizebar-btn {
+    appearance: none;
+    font: inherit;
+    font-weight: 800;
+    color: var(--accent);
+    background: var(--paper);
+    border: 3px solid var(--brand);
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .sizebar-row .sizebar-btn { min-height: 60px; padding: 0 4px; font-size: 26px; white-space: nowrap; }
+  .sizebar-reset { min-height: 46px; padding: 0 14px; font-size: 22px; }
+  .sizebar-btn:hover { background: var(--press); }
+  .sizebar-btn:disabled {
+    color: var(--ink-2);
+    border-color: var(--line);
+    background: var(--paper);
+    cursor: default;
+  }
+
+  .jump {
+    display: grid;
+    gap: 0.4rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+    margin-top: 0.8rem;
+    scroll-margin-top: calc(env(safe-area-inset-top, 0px) + 0.4rem);
+  }
+  .jump a {
+    display: flex;
+    font-size: min(1rem, 12vw); /* 화면 버튼은 휴대폰 폭을 넘지 않게 */
+    align-items: center;
+    gap: 0.45em;
+    padding: 0.3em 0.55em;
+    border: 3px solid var(--brand);
+    border-radius: var(--radius);
+    background: var(--paper);
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .jump a:hover { background: var(--wash); }
+  .jump a[aria-current="true"] { background: var(--accent); color: var(--on-accent); }
+  .jump a[aria-current="true"] .num { background: var(--on-accent); color: var(--accent); }
+
+  /* 번호 원 */
+  .num {
+    flex: none;
+    display: inline-grid;
+    place-items: center;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-weight: 900;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .num--light { background: var(--on-accent); color: var(--accent); }
+  .lead-num { margin-right: 0.35em; vertical-align: 0.08em; }
+
+  /* 화면 */
+  .screen {
+    display: grid;
+    gap: 1.1rem;
+    padding-top: 1rem;
+    border-top: 0.25rem solid var(--ink);
+  }
+  .screen-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.3rem 0.45rem;
+  }
+  .screen-head .num { font-size: min(1.5rem, 17vw); }
+  .screen-head h2 {
+    font-size: min(1.75rem, 19vw); /* 42pt */
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  .block-title {
+    font-size: min(1.5rem, 17vw); /* 36pt */
+    font-weight: 900;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+  .muted { color: var(--ink-2); }
+  .aside { color: var(--ink-2); font-weight: 700; }
+
+  .card {
+    display: grid;
+    gap: 0.45rem;
+    align-content: start;
+    padding: 0.7rem 0.85rem;
+    border: 3px solid var(--brand);
+    border-radius: var(--radius);
+    background: var(--paper);
+  }
+  .card--accent {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+  }
+
+  .next {
+    display: flex;
+    font-size: min(1rem, 12vw);
+    align-items: center;
+    justify-content: center;
+    gap: 0.4em;
+    min-height: 2.4rem;
+    padding: 0.35em 0.8em;
+    border-radius: var(--radius);
+    background: var(--accent);
+    color: var(--on-accent);
+    font-weight: 900;
+    text-align: center;
+    text-decoration: none;
+  }
+  .next:hover { background: var(--accent-2); }
+
+  /* 설교 */
+  .kicker { font-weight: 700; color: var(--on-accent-2); }
+  .sermon-title {
+    font-family: var(--serif);
+    font-size: min(1.6rem, 17vw);
+    font-weight: 900;
+    line-height: 1.35;
+    text-wrap: balance;
+  }
+  .pairs { display: grid; gap: 0.15rem; }
+  .pairs div { display: flex; flex-wrap: wrap; gap: 0 0.6em; }
+  .pairs dt { font-weight: 700; color: var(--on-accent-2); }
+  .pairs dd { font-weight: 700; }
+
+  /* 말씀 */
+  .verse { display: grid; gap: 0.1rem; }
+  .verse blockquote {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.55;
+  }
+  .verse figcaption { color: var(--accent); font-weight: 700; }
+  .plain {
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.6rem 0.8rem;
+    border-radius: var(--radius);
+    background: var(--wash);
+  }
+  .plain-label { color: var(--accent); font-weight: 900; }
+
+  /* 예배 순서 */
+  .steps { display: grid; }
+  .steps > li {
+    display: grid;
+    gap: 0.25rem;
+    padding-block: 0.7rem;
+    border-top: 2px solid var(--line);
+  }
+  .steps > li:first-child { border-top: 0; padding-top: 0.2rem; }
+  .step-name { font-size: min(1.5rem, 17vw); font-weight: 900; line-height: 1.3; }
+  .step-name .num { font-size: 0.8em; }
+  .hymns { display: grid; gap: 0.5rem; margin-top: 0.2rem; }
+  .hymn-ref { font-weight: 700; color: var(--ink-2); }
+  .hymn-no {
+    font-size: min(1.5rem, 17vw);
+    font-weight: 900;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    margin-left: 0.2em;
+  }
+  .hymn-title { font-weight: 700; }
+
+  /* 부별 안내 */
+  .services {
+    display: grid;
+    gap: 0.6rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  }
+  .service-top { display: grid; justify-items: start; gap: 0.15rem; }
+  .pill {
+    display: inline-block;
+    padding: 0.02em 0.4em;
+    border-radius: 0.3em;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-weight: 900;
+    line-height: 1.3;
+  }
+  .service-time {
+    font-size: min(1.5rem, 17vw);
+    font-weight: 900;
+    line-height: 1.3;
+    font-variant-numeric: tabular-nums;
+  }
+  .service-pre { color: var(--ink-2); font-weight: 700; }
+  .facts { display: grid; gap: 0.35rem; margin-top: 0.1rem; }
+  .facts dt { color: var(--accent); font-weight: 700; }
+  .facts dd { font-weight: 700; }
+
+  /* 고백 */
+  .confession > li {
+    padding-block: 0.45rem;
+    border-top: 2px solid var(--line);
+    font-weight: 700;
+  }
+  .confession > li:first-child { border-top: 0; padding-top: 0; }
+
+  /* 주중 */
+  .week { display: grid; }
+  .week > li {
+    display: grid;
+    gap: 0.15rem;
+    padding-block: 0.75rem;
+    border-top: 3px solid var(--brand);
+  }
+  .week-name { font-size: min(1.5rem, 17vw); font-weight: 900; line-height: 1.3; }
+  .week-time { font-size: min(1.25rem, 15vw); font-weight: 900; color: var(--accent); }
+  .preachers { display: grid; gap: 0.1rem; margin-top: 0.15rem; }
+
+  /* 세 가지 */
+  .three-box {
+    display: grid;
+    gap: 0.55rem;
+    padding: 0.75rem 0.85rem;
+    border: 5px solid var(--ink);
+    border-radius: var(--radius);
+  }
+  .three { display: grid; gap: 0.6rem; }
+  .three .num { font-size: 0.9em; }
+
+  /* 소식 */
+  .news { display: grid; gap: 0.7rem; }
+  .tag {
+    justify-self: start;
+    padding: 0.02em 0.45em;
+    border-radius: 0.3em;
+    background: var(--ink);
+    color: var(--paper);
+    font-weight: 700;
+  }
+  .news-title { font-size: min(1.5rem, 17vw); font-weight: 900; line-height: 1.3; text-wrap: balance; }
+  .news-sub { color: var(--accent); font-weight: 900; }
+  .lines { display: grid; gap: 0.3rem; }
+  .lines > li { position: relative; padding-left: 0.85em; }
+  .lines > li::before {
+    content: "";
+    position: absolute;
+    left: 0.08em;
+    top: 0.6em;
+    width: 0.4em;
+    height: 0.4em;
+    border-radius: 50%;
+    background: var(--brand);
+  }
+  .ask {
+    padding-top: 0.4rem;
+    border-top: 2px dashed var(--line);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .ask b { color: var(--accent); font-weight: 900; margin-right: 0.3em; }
+
+  .prayers { display: grid; gap: 0.7rem; }
+  .prayers .num { font-size: 0.9em; }
+
+  .foot {
+    display: grid;
+    gap: 0.3rem;
+    padding-top: 0.8rem;
+    border-top: 3px solid var(--ink);
+    color: var(--ink-2);
+    font-weight: 700;
+  }
+
+  /* 지난 주보 안내와 다른 주 주보 링크 */
+  .old-note {
+    padding: 10px 14px;
+    border-radius: var(--radius);
+    background: var(--ink);
+    color: var(--paper);
+    font-size: min(1rem, 12vw);
+    font-weight: 700;
+  }
+  .old-note a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+  .archive { display: grid; gap: 0.4rem; margin-top: 0.4rem; font-size: min(1rem, 12vw); }
+  .archive-title { color: var(--ink); font-weight: 900; }
+  .archive ul { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .archive a, .archive [aria-current] {
+    display: inline-block;
+    padding: 0.1em 0.6em;
+    border: 3px solid var(--brand);
+    border-radius: 999px;
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .archive [aria-current] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+
+  @media (max-width: 350px) {
+    .sizebar, .size-now, .sizebar-row .sizebar-btn { font-size: 22px; }
+  }
+  @media (max-width: 520px) {
+    .card, .three-box { padding: 16px; }
+    .plain { padding: 12px 14px; }
+  }
+</style>
+</head>
+<body>
+<main class="page" lang="ko">
+  <header class="masthead">
+    <div class="sizebar" role="group" aria-labelledby="size-label">
+      <div class="sizebar-top">
+        <p class="sizebar-label" id="size-label">글씨 크기</p>
+        <button type="button" class="sizebar-btn sizebar-reset" id="size-reset">원래대로</button>
+      </div>
+      <div class="sizebar-row">
+        <button type="button" class="sizebar-btn" id="size-down" aria-label="글씨 작게">− 작게</button>
+        <output class="size-now" id="size-now" aria-live="polite">100%</output>
+        <button type="button" class="sizebar-btn" id="size-up" aria-label="글씨 크게">크게 +</button>
+      </div>
+    </div>
+
+{{OLD_NOTICE}}
+    <p class="eyebrow">사랑의교회 · 큰 글씨 주보</p>
+    <h1>주일예배</h1>
+    <p class="when">{{DATE_LABEL}}</p>
+
+    <nav class="jump" id="tabs" aria-label="화면 고르기">
+      <a href="#worship"><span class="num">1</span>예배 순서</a>
+      <a href="#news"><span class="num">2</span>소식과 기도</a>
+    </nav>
+  </header>
+
+  <!-- 화면 1 -->
+  <section class="screen" id="worship" aria-labelledby="s1">
+    <div class="screen-head">
+      <span class="num" aria-hidden="true">1</span>
+      <h2 id="s1">예배 순서</h2>
+    </div>
+
+{{SCREEN1}}
+
+    <a class="next" href="#news">다음 화면: 소식과 기도 <span aria-hidden="true">→</span></a>
+  </section>
+
+  <!-- 화면 2 -->
+  <section class="screen" id="news" aria-labelledby="s2">
+    <div class="screen-head">
+      <span class="num" aria-hidden="true">2</span>
+      <h2 id="s2">이번 주 소식과 기도</h2>
+    </div>
+
+{{SCREEN2}}
+
+    <a class="next" href="#worship">처음 화면으로 <span aria-hidden="true">↑</span></a>
+  </section>
+
+  <footer class="foot">
+    <p>사랑의교회 {{DATE_SHORT}} 주보를 어르신들이 읽기 쉽게 큰 글씨로 옮긴 페이지예요. 정확한 내용은 원래 주보에서 확인해 주세요.</p>
+    <p>교회 대표 전화 02-3495-1000</p>
+{{ARCHIVE}}
+  </footer>
+</main>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+
+    /* 글씨 크기: 50%~200%를 10%씩 */
+    var MIN = 0.5, MAX = 2, BASE = 1;
+    var key = "dotbogi-jubo-scale";
+    var scale = BASE;
+    try {
+      var saved = parseFloat(localStorage.getItem(key));
+      if (saved >= MIN && saved <= MAX) scale = saved;
+    } catch (e) {}
+
+    var up = document.getElementById("size-up");
+    var down = document.getElementById("size-down");
+    var reset = document.getElementById("size-reset");
+    var now = document.getElementById("size-now");
+
+    function setScale(next, save) {
+      scale = Math.min(MAX, Math.max(MIN, Math.round(next * 10) / 10));
+      root.style.setProperty("--scale", String(scale));
+      now.textContent = Math.round(scale * 100) + "%";
+      down.disabled = scale <= MIN;
+      up.disabled = scale >= MAX;
+      reset.disabled = scale === BASE;
+      if (save) {
+        try { localStorage.setItem(key, String(scale)); } catch (e) {}
+      }
+    }
+    up.addEventListener("click", function () { setScale(scale + 0.1, true); });
+    down.addEventListener("click", function () { setScale(scale - 0.1, true); });
+    reset.addEventListener("click", function () { setScale(BASE, true); });
+    setScale(scale, false);
+
+    /* 화면 1·2·3: 한 번에 한 화면만 보여 준다 */
+    var screens = Array.prototype.slice.call(document.querySelectorAll(".screen"));
+    var tabLinks = Array.prototype.slice.call(document.querySelectorAll("#tabs a"));
+    var tabs = document.getElementById("tabs");
+
+    function isScreen(id) {
+      return screens.some(function (s) { return s.id === id; });
+    }
+    function showScreen(id, scroll) {
+      if (!isScreen(id)) id = screens[0].id;
+      screens.forEach(function (s) { s.hidden = s.id !== id; });
+      tabLinks.forEach(function (a) {
+        if (a.getAttribute("href") === "#" + id) a.setAttribute("aria-current", "true");
+        else a.removeAttribute("aria-current");
+      });
+      if (scroll) tabs.scrollIntoView({ block: "start" });
+    }
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest ? e.target.closest("a[href^='#']") : null;
+      if (!a) return;
+      var id = a.getAttribute("href").slice(1);
+      if (!isScreen(id)) return;
+      e.preventDefault();
+      showScreen(id, true);
+      try { history.replaceState(null, "", "#" + id); } catch (err) {}
+    });
+    showScreen((location.hash || "").slice(1), false);
+
+  })();
+</script>
+</body>
+</html>
