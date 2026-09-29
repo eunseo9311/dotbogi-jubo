@@ -70,7 +70,7 @@
   :focus-visible { outline: 4px solid var(--ink); outline-offset: 4px; }
 
   .page {
-    max-width: 30rem;
+    max-width: 960px; /* 글씨 크기를 바꿔도 페이지 폭은 그대로 */
     margin-inline: auto;
     padding-inline: 20px;
     padding-block: 16px 2.5rem;
@@ -94,6 +94,7 @@
   .sizebar {
     display: grid;
     gap: 10px;
+    max-width: 560px;
     margin-bottom: 14px;
     padding: 12px 14px;
     border-radius: 14px;
@@ -174,6 +175,7 @@
   }
   .jump a {
     display: flex;
+    font-size: min(1rem, 12vw); /* 화면 버튼은 휴대폰 폭을 넘지 않게 */
     align-items: center;
     gap: 0.45em;
     padding: 0.3em 0.55em;
@@ -260,6 +262,7 @@
 
   .next {
     display: flex;
+    font-size: min(1rem, 12vw);
     align-items: center;
     justify-content: center;
     gap: 0.4em;
