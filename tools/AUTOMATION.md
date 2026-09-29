@@ -20,8 +20,11 @@
 ```bash
 cd ~/Desktop/sarangAX/dotbogi-jubo
 git pull --ff-only
+cat work/request-date 2>/dev/null   # 요청 날짜가 있는지 본다
 python3 tools/fetch_bulletin.py
 ```
+
+`work/request-date` 파일이 있으면 그 안의 날짜(`YYYY-MM-DD`) 주보를 만든다. 이때는 이 문서의 모든 `fetch_bulletin.py` 명령에 `--date YYYY-MM-DD`를 붙이고, 6단계에서 올리기까지 마친 뒤 이 파일을 지운다. 지난 주보를 새로 만들거나 시험할 때 쓰는 방법이다.
 
 출력 JSON의 `status`에 따라 움직인다.
 
