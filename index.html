@@ -45,7 +45,7 @@
   @media (prefers-reduced-motion: reduce) {
     :root { scroll-behavior: auto; }
   }
-  *, *::before, *::after { box-sizing: border-box; }
+  *, *::before, *::after { box-sizing: border-box; min-width: 0; }
   body { margin: 0; }
   [hidden] { display: none !important; }
   body {
@@ -61,7 +61,7 @@
   body::before {
     content: "";
     display: block;
-    height: 0.45rem;
+    height: 14px;
     background: var(--brand);
   }
   h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
@@ -116,9 +116,9 @@
     gap: 8px;
   }
   .size-now {
-    min-width: 3.2em;
+    width: 3.6em;
     text-align: center;
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 900;
     color: var(--accent);
     font-variant-numeric: tabular-nums;
@@ -133,7 +133,7 @@
     border-radius: 999px;
     cursor: pointer;
   }
-  .sizebar-row .sizebar-btn { min-height: 60px; padding: 0 8px; font-size: 28px; }
+  .sizebar-row .sizebar-btn { min-height: 60px; padding: 0 4px; font-size: 26px; white-space: nowrap; }
   .sizebar-reset { min-height: 46px; padding: 0 14px; font-size: 22px; }
   .sizebar-btn:hover { background: var(--press); }
   .sizebar-btn:disabled {
@@ -496,6 +496,9 @@
     font-weight: 700;
   }
 
+  @media (max-width: 350px) {
+    .sizebar, .size-now, .sizebar-row .sizebar-btn { font-size: 22px; }
+  }
   @media (max-width: 520px) {
     .card, .three-box { padding: 16px; }
     .plain, .prompt { padding: 12px 14px; }
