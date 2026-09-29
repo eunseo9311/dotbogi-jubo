@@ -29,6 +29,7 @@
     --accent: #b0003a;    /* 짙은 빨강: 글씨와 색칠한 카드 (흰 바탕 대비 7.2:1) */
     --accent-2: #8f0030;
     --wash: #fdeef2;
+    --press: #ffe3ea;
     --line: #f1c6d2;
     --on-accent: #ffffff;
     --on-accent-2: #ffd6e2;
@@ -72,7 +73,7 @@
     max-width: 30rem;
     margin-inline: auto;
     padding-inline: 20px;
-    padding-block: 0.9rem 2.5rem;
+    padding-block: 16px 2.5rem;
     display: grid;
     gap: 2rem;
   }
@@ -82,17 +83,65 @@
   .masthead { display: grid; gap: 0.3rem; }
   .eyebrow { color: var(--accent); font-weight: 700; }
   .masthead h1 {
-    font-size: clamp(1.75rem, 12vw, 2.25rem); /* 최소 42pt */
+    font-size: min(2.25rem, 21vw); /* 휴대폰에서 글씨를 키워도 한 줄에 */
     font-weight: 900;
     line-height: 1.15;
     letter-spacing: -0.02em;
   }
   .when { font-weight: 900; }
 
-  .tools { display: grid; gap: 0.35rem; margin-top: 0.6rem; }
-  .tools-label { font-weight: 700; }
-  .size-now { font-weight: 900; color: var(--accent); margin-left: 0.3em; }
-  .tools-row { display: flex; flex-wrap: wrap; gap: 0.4rem 0.5rem; }
+  /* 글씨 크기 조절: 글씨를 키워도 버튼 자리가 움직이지 않게 px로 고정 */
+  .sizebar {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: var(--wash);
+    font-size: 26px;
+    line-height: 1.3;
+  }
+  .sizebar-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 12px;
+  }
+  .sizebar-label { font-weight: 700; }
+  .sizebar-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 8px;
+  }
+  .size-now {
+    min-width: 3.2em;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .sizebar-btn {
+    appearance: none;
+    font: inherit;
+    font-weight: 800;
+    color: var(--accent);
+    background: var(--paper);
+    border: 3px solid var(--brand);
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .sizebar-row .sizebar-btn { min-height: 60px; padding: 0 8px; font-size: 28px; }
+  .sizebar-reset { min-height: 46px; padding: 0 14px; font-size: 22px; }
+  .sizebar-btn:hover { background: var(--press); }
+  .sizebar-btn:disabled {
+    color: var(--ink-2);
+    border-color: var(--line);
+    background: var(--paper);
+    cursor: default;
+  }
   .btn {
     appearance: none;
     font: inherit;
@@ -169,9 +218,9 @@
     align-items: center;
     gap: 0.3rem 0.45rem;
   }
-  .screen-head .num { font-size: 1.5rem; }
+  .screen-head .num { font-size: min(1.5rem, 17vw); }
   .screen-head h2 {
-    font-size: 1.75rem; /* 42pt */
+    font-size: min(1.75rem, 19vw); /* 42pt */
     font-weight: 900;
     line-height: 1.2;
     letter-spacing: -0.01em;
@@ -180,13 +229,13 @@
   .screen-note { color: var(--ink-2); font-weight: 700; }
 
   .block-title {
-    font-size: 1.5rem; /* 36pt */
+    font-size: min(1.5rem, 17vw); /* 36pt */
     font-weight: 900;
     line-height: 1.3;
     text-wrap: balance;
   }
   .sub-title {
-    font-size: 1.5rem;
+    font-size: min(1.5rem, 17vw);
     font-weight: 900;
     line-height: 1.3;
     margin-top: 0.5rem;
@@ -229,7 +278,7 @@
   .kicker { font-weight: 700; color: var(--on-accent-2); }
   .sermon-title {
     font-family: var(--serif);
-    font-size: 1.6rem;
+    font-size: min(1.6rem, 17vw);
     font-weight: 900;
     line-height: 1.35;
     text-wrap: balance;
@@ -266,12 +315,12 @@
     border-top: 2px solid var(--line);
   }
   .steps > li:first-child { border-top: 0; padding-top: 0.2rem; }
-  .step-name { font-size: 1.5rem; font-weight: 900; line-height: 1.3; }
+  .step-name { font-size: min(1.5rem, 17vw); font-weight: 900; line-height: 1.3; }
   .step-name .num { font-size: 0.8em; }
   .hymns { display: grid; gap: 0.5rem; margin-top: 0.2rem; }
   .hymn-ref { font-weight: 700; color: var(--ink-2); }
   .hymn-no {
-    font-size: 1.5rem;
+    font-size: min(1.5rem, 17vw);
     font-weight: 900;
     color: var(--accent);
     font-variant-numeric: tabular-nums;
@@ -296,7 +345,7 @@
     line-height: 1.3;
   }
   .service-time {
-    font-size: 1.5rem;
+    font-size: min(1.5rem, 17vw);
     font-weight: 900;
     line-height: 1.3;
     font-variant-numeric: tabular-nums;
@@ -322,8 +371,8 @@
     padding-block: 0.75rem;
     border-top: 3px solid var(--brand);
   }
-  .week-name { font-size: 1.5rem; font-weight: 900; line-height: 1.3; }
-  .week-time { font-size: 1.25rem; font-weight: 900; color: var(--accent); }
+  .week-name { font-size: min(1.5rem, 17vw); font-weight: 900; line-height: 1.3; }
+  .week-time { font-size: min(1.25rem, 15vw); font-weight: 900; color: var(--accent); }
   .preachers { display: grid; gap: 0.1rem; margin-top: 0.15rem; }
 
   /* 세 가지 */
@@ -347,7 +396,7 @@
     color: var(--paper);
     font-weight: 700;
   }
-  .news-title { font-size: 1.5rem; font-weight: 900; line-height: 1.3; text-wrap: balance; }
+  .news-title { font-size: min(1.5rem, 17vw); font-weight: 900; line-height: 1.3; text-wrap: balance; }
   .news-sub { color: var(--accent); font-weight: 900; }
   .lines { display: grid; gap: 0.3rem; }
   .lines > li { position: relative; padding-left: 0.85em; }
@@ -448,24 +497,29 @@
   }
 
   @media (max-width: 520px) {
-    .card, .three-box { padding: 0.55rem 0.6rem; }
+    .card, .three-box { padding: 16px; }
+    .plain, .prompt { padding: 12px 14px; }
   }
 </style>
 </head>
 <body>
 <main class="page" lang="ko">
   <header class="masthead">
+    <div class="sizebar" role="group" aria-labelledby="size-label">
+      <div class="sizebar-top">
+        <p class="sizebar-label" id="size-label">글씨 크기</p>
+        <button type="button" class="sizebar-btn sizebar-reset" id="size-reset">원래대로</button>
+      </div>
+      <div class="sizebar-row">
+        <button type="button" class="sizebar-btn" id="size-down" aria-label="글씨 작게">− 작게</button>
+        <output class="size-now" id="size-now" aria-live="polite">100%</output>
+        <button type="button" class="sizebar-btn" id="size-up" aria-label="글씨 크게">크게 +</button>
+      </div>
+    </div>
+
     <p class="eyebrow">사랑의교회 · 큰 글씨 주보</p>
     <h1>주일예배</h1>
     <p class="when">2026년 9월 27일 주일</p>
-
-    <div class="tools" role="group" aria-labelledby="size-label">
-      <p class="tools-label" id="size-label">글씨 크기<output class="size-now" id="size-now" aria-live="polite">보통</output></p>
-      <div class="tools-row">
-        <button type="button" class="btn" id="size-down">− 작게</button>
-        <button type="button" class="btn" id="size-up">크게 +</button>
-      </div>
-    </div>
 
     <nav class="jump" id="tabs" aria-label="화면 고르기">
       <a href="#worship"><span class="num">1</span>예배 순서</a>
@@ -956,36 +1010,35 @@
   (function () {
     var root = document.documentElement;
 
-    /* 글씨 크기 */
-    var steps = [1, 1.2, 1.4];
-    var names = ["보통", "크게", "아주 크게"];
-    var key = "dotbogi-jubo-size";
-    var i = 0;
+    /* 글씨 크기: 50%~200%를 10%씩 */
+    var MIN = 0.5, MAX = 2, BASE = 1;
+    var key = "dotbogi-jubo-scale";
+    var scale = BASE;
     try {
-      var saved = parseInt(localStorage.getItem(key), 10);
-      if (saved >= 0 && saved < steps.length) i = saved;
+      var saved = parseFloat(localStorage.getItem(key));
+      if (saved >= MIN && saved <= MAX) scale = saved;
     } catch (e) {}
 
     var up = document.getElementById("size-up");
     var down = document.getElementById("size-down");
+    var reset = document.getElementById("size-reset");
     var now = document.getElementById("size-now");
 
-    function applySize(save) {
-      root.style.setProperty("--scale", String(steps[i]));
-      now.textContent = names[i];
-      down.disabled = i === 0;
-      up.disabled = i === steps.length - 1;
+    function setScale(next, save) {
+      scale = Math.min(MAX, Math.max(MIN, Math.round(next * 10) / 10));
+      root.style.setProperty("--scale", String(scale));
+      now.textContent = Math.round(scale * 100) + "%";
+      down.disabled = scale <= MIN;
+      up.disabled = scale >= MAX;
+      reset.disabled = scale === BASE;
       if (save) {
-        try { localStorage.setItem(key, String(i)); } catch (e) {}
+        try { localStorage.setItem(key, String(scale)); } catch (e) {}
       }
     }
-    up.addEventListener("click", function () {
-      if (i < steps.length - 1) { i += 1; applySize(true); }
-    });
-    down.addEventListener("click", function () {
-      if (i > 0) { i -= 1; applySize(true); }
-    });
-    applySize(false);
+    up.addEventListener("click", function () { setScale(scale + 0.1, true); });
+    down.addEventListener("click", function () { setScale(scale - 0.1, true); });
+    reset.addEventListener("click", function () { setScale(BASE, true); });
+    setScale(scale, false);
 
     /* 화면 1·2·3: 한 번에 한 화면만 보여 준다 */
     var screens = Array.prototype.slice.call(document.querySelectorAll(".screen"));
